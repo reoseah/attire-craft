@@ -1,0 +1,3 @@
+classTweaker v1 official
+inject-interface net/minecraft/client/model/geom/builders/CubeListBuilder attirecraft/ModCubeListBuilder
+accessible method net/minecraft/client/model/geom/builders/CubeDefinition <init> (Ljava/lang/String;FFFFFFFFLnet/minecraft/client/model/geom/builders/CubeDeformation;ZFFLjava/util/Set;)V
