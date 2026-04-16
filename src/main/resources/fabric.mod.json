@@ -19,7 +19,7 @@
       "attirecraft.AttireCraft::initialize"
     ],
     "client": [
-      "attirecraft.AttireCraft::initializeClient"
+      "attirecraft.AttireCraftClient::initialize"
     ]
   },
   "mixins": [

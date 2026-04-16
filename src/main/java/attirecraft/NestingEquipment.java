@@ -10,17 +10,17 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.HolderSetCodec;
 import net.minecraft.world.item.Item;
 
-public record NestableEquipment(HolderSet<Item> allowed) {
-    public static final Codec<NestableEquipment> CODEC = RecordCodecBuilder.create((i) -> i
+public record NestingEquipment(HolderSet<Item> allowed) {
+    public static final Codec<NestingEquipment> CODEC = RecordCodecBuilder.create(i -> i
             .group(
                     HolderSetCodec.create(Registries.ITEM, Item.CODEC, false)
                             .fieldOf("allowed")
-                            .forGetter(NestableEquipment::allowed)
+                            .forGetter(NestingEquipment::allowed)
             )
-            .apply(i, NestableEquipment::new));
+            .apply(i, NestingEquipment::new));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, NestableEquipment> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<RegistryFriendlyByteBuf, NestingEquipment> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.holderSet(Registries.ITEM),
-            NestableEquipment::allowed,
-            NestableEquipment::new);
+            NestingEquipment::allowed,
+            NestingEquipment::new);
 }

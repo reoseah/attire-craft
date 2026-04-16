@@ -23,23 +23,24 @@ import java.util.List;
 public class ItemMixin {
     @Inject(at = @At("HEAD"), method = "overrideStackedOnOther", cancellable = true)
     public void overrideStackedOnOther(ItemStack self, Slot slot, ClickAction clickAction, Player player, CallbackInfoReturnable<Boolean> cir) {
-        var nestable = self.get(AttireCraft.NESTABLE_EQUIPMENT);
-        if (nestable != null) {
+        var nesting = self.get(AttireCraft.NESTING_EQUIPMENT);
+        if (nesting != null) {
+            // TODO place things out to empty slots
             var other = slot.getItem();
-            if (other.is(nestable.allowed())) {
+            if (other.is(nesting.allowed())) {
                 if (clickAction == ClickAction.PRIMARY) {
                     // TODO: check that item doesn't conflict with other items already nested, e.g. not placing multiple copies of same thing
-                    var nested = ImmutableList.copyOf(Iterables.concat(
-                            List.of(ItemStackTemplate.fromNonEmptyStack(other.split(1))),
-                            self.getOrDefault(AttireCraft.NESTED_EQUIPMENT, List.of())
-                    ));
-
+                    var toNest = ItemStackTemplate.fromNonEmptyStack(other.split(1));
+                    var nested = self.has(AttireCraft.NESTED_EQUIPMENT)
+                            ? ImmutableList.copyOf(Iterables.concat(List.of(toNest), self.get(AttireCraft.NESTED_EQUIPMENT)))
+                            : List.of(toNest);
                     self.set(AttireCraft.NESTED_EQUIPMENT, nested);
 
                     BundleItem.playInsertSound(player);
                     broadcastChangesOnContainerMenu(player);
                     cir.setReturnValue(true);
                     return;
+                } else {
                 }
             } else {
                 BundleItem.playInsertFailSound(player);
