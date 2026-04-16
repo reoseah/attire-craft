@@ -7,21 +7,27 @@ import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.equipment.Equippable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.function.Function;
 
 public class AttireCraft {
@@ -38,8 +44,21 @@ public class AttireCraft {
             .title(Component.translatable("itemGroup.attirecraft")) //
             .build();
 
+    public static final DataComponentType<NestableEquipment> NESTABLE_EQUIPMENT = DataComponentType.<NestableEquipment>builder()
+            .persistent(NestableEquipment.CODEC)
+            .networkSynchronized(NestableEquipment.STREAM_CODEC)
+            .build();
+
+    public static final DataComponentType<List<ItemStackTemplate>> NESTED_EQUIPMENT = DataComponentType.<List<ItemStackTemplate>>builder()
+            .persistent(ItemStackTemplate.CODEC.listOf(1, 64))
+            .networkSynchronized(ItemStackTemplate.STREAM_CODEC.apply(ByteBufCodecs.list(64)))
+            .build();
+
     public static void initialize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, modId("item_group"), CREATIVE_MODE_TAB);
+
+        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, modId("nestable_equipment"), NESTABLE_EQUIPMENT);
+        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, modId("nested_equipment"), NESTED_EQUIPMENT);
 
         ModItems.initialize();
     }
@@ -58,7 +77,17 @@ public class AttireCraft {
         return ResourceKey.create(registryKey, modId(location));
     }
 
+    public static class ModItemTags {
+        public static final TagKey<Item> CHEST_OUTERWEAR_NESTABLE = create("nestable/chest_outerwear");
+
+        private static TagKey<Item> create(String name) {
+            return TagKey.create(Registries.ITEM, modId(name));
+        }
+    }
+
     public static class ModItems {
+        private static final HolderGetter<Item> LOOKUP = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.ITEM);
+
         public static final Item LIGHT_BLUE_SHIRT = register("light_blue_shirt", new Item.Properties()
                 .stacksTo(1)
                 .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()) //
@@ -66,6 +95,7 @@ public class AttireCraft {
         public static final Item GRAY_BLAZER = register("gray_blazer", new Item.Properties()
                 .stacksTo(1)
                 .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()) //
+                .component(AttireCraft.NESTABLE_EQUIPMENT, new NestableEquipment(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE)))
         );
 
         private static void initialize() {
