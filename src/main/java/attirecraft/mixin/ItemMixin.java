@@ -23,37 +23,67 @@ import java.util.List;
 public class ItemMixin {
     @Inject(at = @At("HEAD"), method = "overrideStackedOnOther", cancellable = true)
     public void overrideStackedOnOther(ItemStack self, Slot slot, ClickAction clickAction, Player player, CallbackInfoReturnable<Boolean> cir) {
-        var nesting = self.get(AttireCraft.NESTING_EQUIPMENT);
-        if (nesting != null) {
-            // TODO place things out to empty slots
+        var nestingProperties = self.get(AttireCraft.NESTING_EQUIPMENT);
+        if (nestingProperties != null) {
             var other = slot.getItem();
-            if (other.is(nesting.allowed())) {
-                if (clickAction == ClickAction.PRIMARY) {
-                    // TODO: check that item doesn't conflict with other items already nested, e.g. not placing multiple copies of same thing
-                    var toNest = ItemStackTemplate.fromNonEmptyStack(other.split(1));
-                    var nested = self.has(AttireCraft.NESTED_EQUIPMENT)
-                            ? ImmutableList.copyOf(Iterables.concat(List.of(toNest), self.get(AttireCraft.NESTED_EQUIPMENT)))
-                            : List.of(toNest);
-                    self.set(AttireCraft.NESTED_EQUIPMENT, nested);
-
-                    BundleItem.playInsertSound(player);
-                    broadcastChangesOnContainerMenu(player);
-                    cir.setReturnValue(true);
+            if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
+                if (!other.is(nestingProperties.allowed())) {
+                    BundleItem.playInsertFailSound(player);
+                    cir.setReturnValue(false);
                     return;
-                } else {
                 }
-            } else {
-                BundleItem.playInsertFailSound(player);
-                cir.setReturnValue(false);
+                // TODO: check that item doesn't conflict with other items already nested, e.g. not placing multiple copies of same thing
+                var otherSafe = slot.safeTake(1, 1, player);
+                if (otherSafe.isEmpty()) {
+                    BundleItem.playInsertFailSound(player);
+                    cir.setReturnValue(false);
+                    return;
+                }
+                var newEntry = ItemStackTemplate.fromNonEmptyStack(otherSafe);
+                var newNestedItems = self.has(AttireCraft.NESTED_EQUIPMENT)
+                        ? ImmutableList.copyOf(Iterables.concat(List.of(newEntry), self.get(AttireCraft.NESTED_EQUIPMENT)))
+                        : List.of(newEntry);
+                self.set(AttireCraft.NESTED_EQUIPMENT, newNestedItems);
+
+                broadcastChangesOnContainerMenu(player);
+                BundleItem.playInsertSound(player);
+                cir.setReturnValue(true);
+                return;
+            } else if (clickAction == ClickAction.SECONDARY && other.isEmpty()) {
+                System.out.println("trying to extract an item");
+                var nestedItems = self.get(AttireCraft.NESTED_EQUIPMENT);
+                if (nestedItems == null || nestedItems.isEmpty()) {
+                    System.out.println("nested items is null or empty");
+                    return;
+                }
+                var removedEntry = nestedItems.getFirst();
+                var inserted = slot.safeInsert(removedEntry.create()).isEmpty();
+                if (!inserted) {
+                    System.out.println("couldn't insert into the slot");
+                    cir.setReturnValue(false);
+                    return;
+                }
+
+                var newNestedItems = List.copyOf(nestedItems.subList(1, nestedItems.size()));
+                if (newNestedItems.isEmpty()) {
+                    self.remove(AttireCraft.NESTED_EQUIPMENT);
+                } else {
+                    self.set(AttireCraft.NESTED_EQUIPMENT, newNestedItems);
+                }
+                broadcastChangesOnContainerMenu(player);
+                BundleItem.playRemoveOneSound(player);
+                cir.setReturnValue(true);
                 return;
             }
         }
     }
 
+
     @Inject(at = @At("HEAD"), method = "overrideOtherStackedOnMe", cancellable = true)
     public void overrideOtherStackedOnMe(ItemStack self, ItemStack other, Slot slot, ClickAction clickAction, Player player, SlotAccess carriedItem, CallbackInfoReturnable<Boolean> cir) {
 
     }
+
 
     @Unique
     private static void broadcastChangesOnContainerMenu(final Player player) {

@@ -34,19 +34,21 @@ public class AttireCraft {
 
     public static final CreativeModeTab CREATIVE_MODE_TAB = FabricCreativeModeTab.builder().icon(() -> new ItemStack(ModItems.LIGHT_BLUE_SHIRT)).title(Component.translatable("itemGroup.attirecraft")).build();
 
-    public static final DataComponentType<NestingEquipment> NESTING_EQUIPMENT = DataComponentType.<NestingEquipment>builder().persistent(NestingEquipment.CODEC).networkSynchronized(NestingEquipment.STREAM_CODEC).build();
+    public static final DataComponentType<NestingProperties> NESTING_EQUIPMENT = DataComponentType.<NestingProperties>builder().persistent(NestingProperties.CODEC).networkSynchronized(NestingProperties.STREAM_CODEC).build();
     public static final DataComponentType<List<ItemStackTemplate>> NESTED_EQUIPMENT = DataComponentType.<List<ItemStackTemplate>>builder().persistent(ItemStackTemplate.CODEC.listOf(1, 64)).networkSynchronized(ItemStackTemplate.STREAM_CODEC.apply(ByteBufCodecs.list(64))).build();
 
     public static void initialize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, modId("item_group"), CREATIVE_MODE_TAB);
-        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, modId("nesting_equipment"), NESTING_EQUIPMENT);
+        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, modId("nesting_properties"), NESTING_EQUIPMENT);
         Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, modId("nested_equipment"), NESTED_EQUIPMENT);
 
         ModItems.initialize();
 
         CreativeModeTabEvents.modifyOutputEvent(CREATIVE_MODE_TAB_KEY).register(group -> {
+            group.accept(ModItems.WHITE_SHIRT);
             group.accept(ModItems.LIGHT_BLUE_SHIRT);
             group.accept(ModItems.GRAY_BLAZER);
+            group.accept(ModItems.BLACK_BLAZER);
         });
     }
 
@@ -69,9 +71,11 @@ public class AttireCraft {
     public static class ModItems {
         private static final HolderGetter<Item> LOOKUP = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.ITEM);
 
+        public static final Item WHITE_SHIRT = register("white_shirt", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()));
         public static final Item LIGHT_BLUE_SHIRT = register("light_blue_shirt", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()));
 
-        public static final Item GRAY_BLAZER = register("gray_blazer", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()).component(AttireCraft.NESTING_EQUIPMENT, new NestingEquipment(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
+        public static final Item GRAY_BLAZER = register("gray_blazer", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()).component(AttireCraft.NESTING_EQUIPMENT, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
+        public static final Item BLACK_BLAZER = register("black_blazer", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()).component(AttireCraft.NESTING_EQUIPMENT, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
 
         private static void initialize() {
         }

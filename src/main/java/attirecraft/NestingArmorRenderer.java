@@ -18,8 +18,12 @@ public record NestingArmorRenderer(HumanoidModel<HumanoidRenderState> model,
         var nested = stack.get(AttireCraft.NESTED_EQUIPMENT);
         if (nested != null) {
             for (var nestedItem : nested) {
-                if (ArmorRendererRegistryImpl.get(nestedItem.item().value()) instanceof TemplateAwareArmorRenderer nestedRenderer) {
-                    nestedRenderer.attirecraft$render(poseStack, submitNodeCollector, nestedItem, humanoidRenderState, slot, light, contextModel);
+                var nestedRenderer = ArmorRendererRegistryImpl.get(nestedItem.item().value());
+                if (nestedRenderer instanceof TemplateAwareArmorRenderer templateRenderer) {
+                    templateRenderer.attirecraft$render(poseStack, submitNodeCollector, nestedItem, humanoidRenderState, slot, light, contextModel);
+                } else {
+                    var nestedStack = nestedItem.create();
+                    nestedRenderer.render(poseStack, submitNodeCollector, nestedStack, humanoidRenderState, slot, light, contextModel);
                 }
             }
         }
