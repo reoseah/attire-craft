@@ -49,6 +49,8 @@ public class AttireCraft {
             group.accept(ModItems.LIGHT_BLUE_SHIRT);
             group.accept(ModItems.GRAY_BLAZER);
             group.accept(ModItems.BLACK_BLAZER);
+            group.accept(ModItems.GRAY_TROUSERS);
+            group.accept(ModItems.BLACK_TROUSERS);
         });
     }
 
@@ -62,6 +64,7 @@ public class AttireCraft {
 
     public static class ModItemTags {
         public static final TagKey<Item> CHEST_OUTERWEAR_NESTABLE = create("nestable/chest_outerwear");
+        public static final TagKey<Item> LEGS_OUTERWEAR_NESTABLE = create("nestable/legs_outerwear");
 
         private static TagKey<Item> create(String name) {
             return TagKey.create(Registries.ITEM, modId(name));
@@ -76,6 +79,9 @@ public class AttireCraft {
 
         public static final Item GRAY_BLAZER = register("gray_blazer", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()).component(AttireCraft.NESTING_EQUIPMENT, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
         public static final Item BLACK_BLAZER = register("black_blazer", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build()).component(AttireCraft.NESTING_EQUIPMENT, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
+
+        public static final Item GRAY_TROUSERS = register("gray_trousers", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.LEGS).build()).component(AttireCraft.NESTING_EQUIPMENT, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.LEGS_OUTERWEAR_NESTABLE))));
+        public static final Item BLACK_TROUSERS = register("black_trousers", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.LEGS).build()).component(AttireCraft.NESTING_EQUIPMENT, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.LEGS_OUTERWEAR_NESTABLE))));
 
         private static void initialize() {
         }

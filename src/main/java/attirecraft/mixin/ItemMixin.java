@@ -1,12 +1,14 @@
 package attirecraft.mixin;
 
 import attirecraft.AttireCraft;
+import attirecraft.NestedEquipmentTooltipComponent;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.BundleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mixin(Item.class)
 public class ItemMixin {
@@ -50,16 +53,13 @@ public class ItemMixin {
                 cir.setReturnValue(true);
                 return;
             } else if (clickAction == ClickAction.SECONDARY && other.isEmpty()) {
-                System.out.println("trying to extract an item");
                 var nestedItems = self.get(AttireCraft.NESTED_EQUIPMENT);
                 if (nestedItems == null || nestedItems.isEmpty()) {
-                    System.out.println("nested items is null or empty");
                     return;
                 }
                 var removedEntry = nestedItems.getFirst();
                 var inserted = slot.safeInsert(removedEntry.create()).isEmpty();
                 if (!inserted) {
-                    System.out.println("couldn't insert into the slot");
                     cir.setReturnValue(false);
                     return;
                 }
@@ -84,6 +84,15 @@ public class ItemMixin {
 
     }
 
+
+    @Inject(at = @At("HEAD"), method = "getTooltipImage", cancellable = true)
+    public void getTooltipImage(ItemStack itemStack, CallbackInfoReturnable<Optional<TooltipComponent>> cir) {
+        var nestedItems = itemStack.get(AttireCraft.NESTED_EQUIPMENT);
+        if (nestedItems == null || nestedItems.isEmpty()) {
+            return;
+        }
+        cir.setReturnValue(Optional.of(new NestedEquipmentTooltipComponent(nestedItems)));
+    }
 
     @Unique
     private static void broadcastChangesOnContainerMenu(final Player player) {
