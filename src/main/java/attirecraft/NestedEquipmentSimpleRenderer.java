@@ -11,8 +11,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 
-public record NestingArmorRenderer(HumanoidModel<HumanoidRenderState> model,
-                                   Identifier texture) implements ArmorRenderer {
+public record NestedEquipmentSimpleRenderer(HumanoidModel<HumanoidRenderState> model,
+                                            Identifier texture) implements ArmorRenderer {
     @Override
     public void render(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, ItemStack stack, HumanoidRenderState humanoidRenderState, EquipmentSlot slot, int light, HumanoidModel<HumanoidRenderState> contextModel) {
         var nested = stack.get(AttireCraft.NESTED_EQUIPMENT);
@@ -20,8 +20,8 @@ public record NestingArmorRenderer(HumanoidModel<HumanoidRenderState> model,
             for (var nestedItem : nested) {
                 var nestedRenderer = ArmorRendererRegistryImpl.get(nestedItem.item().value());
                 if (nestedRenderer instanceof TemplateAwareArmorRenderer templateRenderer) {
-                    templateRenderer.attirecraft$render(poseStack, submitNodeCollector, nestedItem, humanoidRenderState, slot, light, contextModel);
-                } else {
+                    templateRenderer.renderTemplate(poseStack, submitNodeCollector, nestedItem, humanoidRenderState, slot, light, contextModel);
+                } else if (nestedRenderer != null) {
                     var nestedStack = nestedItem.create();
                     nestedRenderer.render(poseStack, submitNodeCollector, nestedStack, humanoidRenderState, slot, light, contextModel);
                 }

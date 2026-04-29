@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "attirecraft:attire/color_palettes/palette",
+      "permutations": {
+        "light_blue": "attirecraft:attire/color_palettes/light_blue",
+        "white": "attirecraft:attire/color_palettes/white",
+        "gray": "attirecraft:attire/color_palettes/gray",
+        "red": "attirecraft:attire/color_palettes/red",
+        "pink": "attirecraft:attire/color_palettes/pink",
+        "black": "attirecraft:attire/color_palettes/black"
+      },
+      "textures": [
+        "attirecraft:attire/equipment/shirt",
+        "attirecraft:attire/equipment/blazer"
+      ]
+    }
+  ]
+}
