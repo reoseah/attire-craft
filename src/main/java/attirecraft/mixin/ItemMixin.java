@@ -26,11 +26,11 @@ import java.util.Optional;
 public class ItemMixin {
     @Inject(at = @At("HEAD"), method = "overrideStackedOnOther", cancellable = true)
     public void overrideStackedOnOther(ItemStack self, Slot slot, ClickAction clickAction, Player player, CallbackInfoReturnable<Boolean> cir) {
-        var nestingProperties = self.get(AttireCraft.NESTING_EQUIPMENT);
+        var nestingProperties = self.get(AttireCraft.NESTING_PROPERTIES);
         if (nestingProperties != null) {
             var other = slot.getItem();
             if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
-                if (!other.is(nestingProperties.allowed())) {
+                if (!other.is(nestingProperties.allowedInside())) {
                     BundleItem.playInsertFailSound(player);
                     cir.setReturnValue(false);
                     return;

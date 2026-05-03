@@ -21,14 +21,37 @@ public class AttireCraftClient {
     public static final ModelLayerLocation TROUSERS_MODEL = new ModelLayerLocation(AttireCraft.modId("trousers"), "main");
 
     public static final Identifier WHITE_SHIRT = AttireCraft.modId("attire/equipment/shirt_white");
+    public static final Identifier ORANGE_SHIRT = AttireCraft.modId("attire/equipment/shirt_orange");
+    public static final Identifier MAGENTA_SHIRT = AttireCraft.modId("attire/equipment/shirt_magenta");
     public static final Identifier LIGHT_BLUE_SHIRT = AttireCraft.modId("attire/equipment/shirt_light_blue");
-    public static final Identifier RED_SHIRT = AttireCraft.modId("attire/equipment/shirt_red");
+    public static final Identifier YELLOW_SHIRT = AttireCraft.modId("attire/equipment/shirt_yellow");
+    public static final Identifier LIME_SHIRT = AttireCraft.modId("attire/equipment/shirt_lime");
     public static final Identifier PINK_SHIRT = AttireCraft.modId("attire/equipment/shirt_pink");
+    public static final Identifier GRAY_SHIRT = AttireCraft.modId("attire/equipment/shirt_gray");
+    public static final Identifier LIGHT_GRAY_SHIRT = AttireCraft.modId("attire/equipment/shirt_light_gray");
+    public static final Identifier CYAN_SHIRT = AttireCraft.modId("attire/equipment/shirt_cyan");
+    public static final Identifier PURPLE_SHIRT = AttireCraft.modId("attire/equipment/shirt_purple");
+    public static final Identifier BLUE_SHIRT = AttireCraft.modId("attire/equipment/shirt_blue");
+    public static final Identifier BROWN_SHIRT = AttireCraft.modId("attire/equipment/shirt_brown");
+    public static final Identifier GREEN_SHIRT = AttireCraft.modId("attire/equipment/shirt_green");
+    public static final Identifier RED_SHIRT = AttireCraft.modId("attire/equipment/shirt_red");
     public static final Identifier BLACK_SHIRT = AttireCraft.modId("attire/equipment/shirt_black");
 
-    public static final Identifier GRAY_BLAZER = AttireCraft.modId("attire/equipment/blazer_gray");
-    public static final Identifier RED_BLAZER = AttireCraft.modId("attire/equipment/blazer_red");
+    public static final Identifier WHITE_BLAZER = AttireCraft.modId("attire/equipment/blazer_white");
+    public static final Identifier ORANGE_BLAZER = AttireCraft.modId("attire/equipment/blazer_orange");
+    public static final Identifier MAGENTA_BLAZER = AttireCraft.modId("attire/equipment/blazer_magenta");
+    public static final Identifier LIGHT_BLUE_BLAZER = AttireCraft.modId("attire/equipment/blazer_light_blue");
+    public static final Identifier YELLOW_BLAZER = AttireCraft.modId("attire/equipment/blazer_yellow");
+    public static final Identifier LIME_BLAZER = AttireCraft.modId("attire/equipment/blazer_lime");
     public static final Identifier PINK_BLAZER = AttireCraft.modId("attire/equipment/blazer_pink");
+    public static final Identifier GRAY_BLAZER = AttireCraft.modId("attire/equipment/blazer_gray");
+    public static final Identifier LIGHT_GRAY_BLAZER = AttireCraft.modId("attire/equipment/blazer_light_gray");
+    public static final Identifier CYAN_BLAZER = AttireCraft.modId("attire/equipment/blazer_cyan");
+    public static final Identifier PURPLE_BLAZER = AttireCraft.modId("attire/equipment/blazer_purple");
+    public static final Identifier BLUE_BLAZER = AttireCraft.modId("attire/equipment/blazer_blue");
+    public static final Identifier BROWN_BLAZER = AttireCraft.modId("attire/equipment/blazer_brown");
+    public static final Identifier GREEN_BLAZER = AttireCraft.modId("attire/equipment/blazer_green");
+    public static final Identifier RED_BLAZER = AttireCraft.modId("attire/equipment/blazer_red");
     public static final Identifier BLACK_BLAZER = AttireCraft.modId("attire/equipment/blazer_black");
 
     public static final Identifier GRAY_TROUSERS = AttireCraft.modId("textures/equipment/trousers/gray.png");
@@ -40,14 +63,37 @@ public class AttireCraftClient {
         ModelLayerRegistry.registerModelLayer(TROUSERS_MODEL, AttireCraftClient::createPantsLayerDefinition);
 
         ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, WHITE_SHIRT), AttireCraft.ModItems.WHITE_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, ORANGE_SHIRT), AttireCraft.ModItems.ORANGE_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, MAGENTA_SHIRT), AttireCraft.ModItems.MAGENTA_SHIRT);
         ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, LIGHT_BLUE_SHIRT), AttireCraft.ModItems.LIGHT_BLUE_SHIRT);
-        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, RED_SHIRT), AttireCraft.ModItems.RED_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, YELLOW_SHIRT), AttireCraft.ModItems.YELLOW_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, LIME_SHIRT), AttireCraft.ModItems.LIME_SHIRT);
         ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, PINK_SHIRT), AttireCraft.ModItems.PINK_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, GRAY_SHIRT), AttireCraft.ModItems.GRAY_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, LIGHT_GRAY_SHIRT), AttireCraft.ModItems.LIGHT_GRAY_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, CYAN_SHIRT), AttireCraft.ModItems.CYAN_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, PURPLE_SHIRT), AttireCraft.ModItems.PURPLE_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, BLUE_SHIRT), AttireCraft.ModItems.BLUE_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, BROWN_SHIRT), AttireCraft.ModItems.BROWN_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, GREEN_SHIRT), AttireCraft.ModItems.GREEN_SHIRT);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, RED_SHIRT), AttireCraft.ModItems.RED_SHIRT);
         ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, SHIRT_MODEL, BLACK_SHIRT), AttireCraft.ModItems.BLACK_SHIRT);
 
-        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, GRAY_BLAZER), AttireCraft.ModItems.GRAY_BLAZER);
-        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, RED_BLAZER), AttireCraft.ModItems.RED_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, WHITE_BLAZER), AttireCraft.ModItems.WHITE_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, ORANGE_BLAZER), AttireCraft.ModItems.ORANGE_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, MAGENTA_BLAZER), AttireCraft.ModItems.MAGENTA_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, LIGHT_BLUE_BLAZER), AttireCraft.ModItems.LIGHT_BLUE_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, YELLOW_BLAZER), AttireCraft.ModItems.YELLOW_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, LIME_BLAZER), AttireCraft.ModItems.LIME_BLAZER);
         ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, PINK_BLAZER), AttireCraft.ModItems.PINK_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, GRAY_BLAZER), AttireCraft.ModItems.GRAY_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, LIGHT_GRAY_BLAZER), AttireCraft.ModItems.LIGHT_GRAY_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, CYAN_BLAZER), AttireCraft.ModItems.CYAN_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, PURPLE_BLAZER), AttireCraft.ModItems.PURPLE_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, BLUE_BLAZER), AttireCraft.ModItems.BLUE_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, BROWN_BLAZER), AttireCraft.ModItems.BROWN_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, GREEN_BLAZER), AttireCraft.ModItems.GREEN_BLAZER);
+        ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, RED_BLAZER), AttireCraft.ModItems.RED_BLAZER);
         ArmorRenderer.register(ctx -> new NestedEquipmentTrimPaletteRenderer(ctx, BLAZER_MODEL, BLACK_BLAZER), AttireCraft.ModItems.BLACK_BLAZER);
 
         ArmorRenderer.register(ctx -> new NestedEquipmentSimpleRenderer(new HumanoidModel<>(ctx.bakeLayer(TROUSERS_MODEL)), GRAY_TROUSERS), AttireCraft.ModItems.GRAY_TROUSERS);
