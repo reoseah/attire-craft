@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "id": "attirecraft",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "AttireCraft",
+  "description": "Nestable clothing",
   "authors": [
-    "Me!"
+    "reoseah"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/reoseah/attire-craft",
+    "sources": "https://github.com/reoseah/attire-craft"
   },
   "license": "CC0-1.0",
   "icon": "assets/attirecraft/icon.png",

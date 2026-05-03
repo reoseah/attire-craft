@@ -12,6 +12,9 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStackTemplate;
+
+import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class AttireCraftClient {
@@ -70,7 +73,6 @@ public class AttireCraftClient {
     public static final Identifier RED_TROUSERS = AttireCraft.modId("attire/equipment/trousers_red");
     public static final Identifier BLACK_TROUSERS = AttireCraft.modId("attire/equipment/trousers_black");
 
-
     public static void initialize() {
         ModelLayerRegistry.registerModelLayer(SHIRT_MODEL, AttireCraftClient::createShirtLayerDefinition);
         ModelLayerRegistry.registerModelLayer(BLAZER_MODEL, AttireCraftClient::createBlazerLayerDefinition);
@@ -127,7 +129,10 @@ public class AttireCraftClient {
         ArmorRenderer.register(ctx -> AtlasArmorRenderer.withArmorTrimAtlas(ctx, TROUSERS_MODEL, RED_TROUSERS), AttireCraft.ModItems.RED_TROUSERS);
         ArmorRenderer.register(ctx -> AtlasArmorRenderer.withArmorTrimAtlas(ctx, TROUSERS_MODEL, BLACK_TROUSERS), AttireCraft.ModItems.BLACK_TROUSERS);
 
-        ClientTooltipComponentCallback.EVENT.register(component -> component instanceof NestedEquipmentTooltipComponent nestedEquipment ? nestedEquipment : null);
+        ClientTooltipComponentCallback.EVENT.register(component ->
+                component instanceof NestedEquipmentTooltipComponent(List<ItemStackTemplate> equipment)
+                        ? new NestedEquipmentTooltipComponent.Clientside((equipment))
+                        : null);
     }
 
     public static LayerDefinition createShirtLayerDefinition() {

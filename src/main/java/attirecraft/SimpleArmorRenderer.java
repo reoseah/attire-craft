@@ -1,6 +1,8 @@
 package attirecraft;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -10,6 +12,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 
+@Environment(EnvType.CLIENT)
 public record SimpleArmorRenderer(HumanoidModel<HumanoidRenderState> model,
                                   Identifier texture) implements ArmorRenderer {
     @Override
