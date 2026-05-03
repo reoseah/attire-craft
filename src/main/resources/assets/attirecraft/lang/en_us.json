@@ -32,5 +32,22 @@
   "item.attirecraft.brown_blazer": "Brown Blazer",
   "item.attirecraft.green_blazer": "Green Blazer",
   "item.attirecraft.red_blazer": "Red Blazer",
-  "item.attirecraft.black_blazer": "Black Blazer"
+  "item.attirecraft.black_blazer": "Black Blazer",
+
+  "item.attirecraft.white_trousers": "White Trousers",
+  "item.attirecraft.orange_trousers": "Orange Trousers",
+  "item.attirecraft.magenta_trousers": "Magenta Trousers",
+  "item.attirecraft.light_blue_trousers": "Light Blue Trousers",
+  "item.attirecraft.yellow_trousers": "Yellow Trousers",
+  "item.attirecraft.lime_trousers": "Lime Trousers",
+  "item.attirecraft.pink_trousers": "Pink Trousers",
+  "item.attirecraft.gray_trousers": "Gray Trousers",
+  "item.attirecraft.light_gray_trousers": "Light Gray Trousers",
+  "item.attirecraft.cyan_trousers": "Cyan Trousers",
+  "item.attirecraft.purple_trousers": "Purple Trousers",
+  "item.attirecraft.blue_trousers": "Blue Trousers",
+  "item.attirecraft.brown_trousers": "Brown Trousers",
+  "item.attirecraft.green_trousers": "Green Trousers",
+  "item.attirecraft.red_trousers": "Red Trousers",
+  "item.attirecraft.black_trousers": "Black Trousers"
 }

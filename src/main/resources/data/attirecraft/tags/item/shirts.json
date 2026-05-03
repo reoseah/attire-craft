@@ -1,10 +1,20 @@
 {
   "values": [
     "attirecraft:white_shirt",
+    "attirecraft:orange_shirt",
+    "attirecraft:magenta_shirt",
     "attirecraft:light_blue_shirt",
-    "attirecraft:gray_shirt",
-    "attirecraft:red_shirt",
+    "attirecraft:yellow_shirt",
+    "attirecraft:lime_shirt",
     "attirecraft:pink_shirt",
+    "attirecraft:gray_shirt",
+    "attirecraft:light_gray_shirt",
+    "attirecraft:cyan_shirt",
+    "attirecraft:purple_shirt",
+    "attirecraft:blue_shirt",
+    "attirecraft:brown_shirt",
+    "attirecraft:green_shirt",
+    "attirecraft:red_shirt",
     "attirecraft:black_shirt"
   ]
 }

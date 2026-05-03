@@ -23,7 +23,8 @@
       },
       "textures": [
         "attirecraft:attire/equipment/shirt",
-        "attirecraft:attire/equipment/blazer"
+        "attirecraft:attire/equipment/blazer",
+        "attirecraft:attire/equipment/trousers"
       ]
     }
   ]

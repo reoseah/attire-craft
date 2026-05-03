@@ -11,5 +11,5 @@ import net.minecraft.world.item.ItemStackTemplate;
 /// for optimization purposes (I don't know how impactful it'll be).
 public interface TemplateAwareArmorRenderer {
     /// [ItemStackTemplate] version of [net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer#render].
-    void renderTemplate(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, ItemStackTemplate template, HumanoidRenderState humanoidRenderState, EquipmentSlot slot, int light, HumanoidModel<HumanoidRenderState> contextModel);
+    void renderTemplate(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, ItemStackTemplate template, HumanoidRenderState state, EquipmentSlot slot, int lightCoords, HumanoidModel<HumanoidRenderState> contextModel);
 }

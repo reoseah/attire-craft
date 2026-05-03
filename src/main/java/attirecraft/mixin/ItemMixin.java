@@ -88,10 +88,10 @@ public class ItemMixin {
     @Inject(at = @At("HEAD"), method = "getTooltipImage", cancellable = true)
     public void getTooltipImage(ItemStack itemStack, CallbackInfoReturnable<Optional<TooltipComponent>> cir) {
         var nestedItems = itemStack.get(AttireCraft.NESTED_EQUIPMENT);
-        if (nestedItems == null || nestedItems.isEmpty()) {
+        if (nestedItems != null && !nestedItems.isEmpty()) {
+            cir.setReturnValue(Optional.of(new NestedEquipmentTooltipComponent(nestedItems)));
             return;
         }
-        cir.setReturnValue(Optional.of(new NestedEquipmentTooltipComponent(nestedItems)));
     }
 
     @Unique

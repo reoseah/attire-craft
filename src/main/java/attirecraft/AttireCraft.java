@@ -78,7 +78,21 @@ public class AttireCraft {
             group.accept(ModItems.RED_BLAZER);
             group.accept(ModItems.BLACK_BLAZER);
 
+            group.accept(ModItems.WHITE_TROUSERS);
+            group.accept(ModItems.ORANGE_TROUSERS);
+            group.accept(ModItems.MAGENTA_TROUSERS);
+            group.accept(ModItems.LIGHT_BLUE_TROUSERS);
+            group.accept(ModItems.YELLOW_TROUSERS);
+            group.accept(ModItems.LIME_TROUSERS);
+            group.accept(ModItems.PINK_TROUSERS);
             group.accept(ModItems.GRAY_TROUSERS);
+            group.accept(ModItems.LIGHT_GRAY_TROUSERS);
+            group.accept(ModItems.CYAN_TROUSERS);
+            group.accept(ModItems.PURPLE_TROUSERS);
+            group.accept(ModItems.BLUE_TROUSERS);
+            group.accept(ModItems.BROWN_TROUSERS);
+            group.accept(ModItems.GREEN_TROUSERS);
+            group.accept(ModItems.RED_TROUSERS);
             group.accept(ModItems.BLACK_TROUSERS);
         });
     }
@@ -120,25 +134,41 @@ public class AttireCraft {
         public static final Item RED_SHIRT = register("red_shirt", chestArmor());
         public static final Item BLACK_SHIRT = register("black_shirt", chestArmor());
 
-        public static final Item WHITE_BLAZER = register("white_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item ORANGE_BLAZER = register("orange_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item MAGENTA_BLAZER = register("magenta_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item LIGHT_BLUE_BLAZER = register("light_blue_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item YELLOW_BLAZER = register("yellow_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item LIME_BLAZER = register("lime_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item PINK_BLAZER = register("pink_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item GRAY_BLAZER = register("gray_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item LIGHT_GRAY_BLAZER = register("light_gray_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item CYAN_BLAZER = register("cyan_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item PURPLE_BLAZER = register("purple_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item BLUE_BLAZER = register("blue_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item BROWN_BLAZER = register("brown_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item GREEN_BLAZER = register("green_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item RED_BLAZER = register("red_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
-        public static final Item BLACK_BLAZER = register("black_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE))));
+        public static final NestingProperties BLAZER = new NestingProperties(LOOKUP.getOrThrow(ModItemTags.CHEST_OUTERWEAR_NESTABLE));
+        public static final Item WHITE_BLAZER = register("white_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item ORANGE_BLAZER = register("orange_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item MAGENTA_BLAZER = register("magenta_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item LIGHT_BLUE_BLAZER = register("light_blue_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item YELLOW_BLAZER = register("yellow_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item LIME_BLAZER = register("lime_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item PINK_BLAZER = register("pink_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item GRAY_BLAZER = register("gray_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item LIGHT_GRAY_BLAZER = register("light_gray_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item CYAN_BLAZER = register("cyan_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item PURPLE_BLAZER = register("purple_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item BLUE_BLAZER = register("blue_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item BROWN_BLAZER = register("brown_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item GREEN_BLAZER = register("green_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item RED_BLAZER = register("red_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
+        public static final Item BLACK_BLAZER = register("black_blazer", chestArmor().component(AttireCraft.NESTING_PROPERTIES, BLAZER));
 
-        public static final Item GRAY_TROUSERS = register("gray_trousers", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.LEGS).build()).component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.LEGS_OUTERWEAR_NESTABLE))));
-        public static final Item BLACK_TROUSERS = register("black_trousers", new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.LEGS).build()).component(AttireCraft.NESTING_PROPERTIES, new NestingProperties(LOOKUP.getOrThrow(ModItemTags.LEGS_OUTERWEAR_NESTABLE))));
+        public static final NestingProperties TROUSERS = new NestingProperties(LOOKUP.getOrThrow(ModItemTags.LEGS_OUTERWEAR_NESTABLE));
+        public static final Item WHITE_TROUSERS = register("white_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item ORANGE_TROUSERS = register("orange_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item MAGENTA_TROUSERS = register("magenta_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item LIGHT_BLUE_TROUSERS = register("light_blue_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item YELLOW_TROUSERS = register("yellow_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item LIME_TROUSERS = register("lime_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item PINK_TROUSERS = register("pink_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item GRAY_TROUSERS = register("gray_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item LIGHT_GRAY_TROUSERS = register("light_gray_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item CYAN_TROUSERS = register("cyan_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item PURPLE_TROUSERS = register("purple_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item BLUE_TROUSERS = register("blue_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item BROWN_TROUSERS = register("brown_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item GREEN_TROUSERS = register("green_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item RED_TROUSERS = register("red_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
+        public static final Item BLACK_TROUSERS = register("black_trousers", legArmor().component(AttireCraft.NESTING_PROPERTIES, TROUSERS));
 
         private static void initialize() {
         }
@@ -163,6 +193,9 @@ public class AttireCraft {
 
         private static Item.Properties chestArmor() {
             return new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).build());
+        }
+        private static Item.Properties legArmor() {
+            return new Item.Properties().stacksTo(1).component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.LEGS).build());
         }
     }
 }

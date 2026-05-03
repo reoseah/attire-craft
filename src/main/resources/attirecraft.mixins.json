@@ -6,7 +6,8 @@
     "ItemMixin"
   ],
   "client": [
-    "client.CubeListBuilderMixin"
+    "client.CubeListBuilderMixin",
+    "client.HumanoidArmorLayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
